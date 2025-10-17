@@ -1,0 +1,27 @@
+    "chainlink/=lib/chainlink/contracts/",
+
+---
+# Pickwinner function 
+
+  function pickWinner() external {
+        // Check to see if the raffle is over, time is enough, or not
+        if((block.timestamp - sLastTimeStamp) < I_INTERVAL) {
+            revert(); //⛔
+        }
+
+
+            VRFV2PlusClient.RandomWordsRequest({
+                keyHash: s_keyHash,
+                subId: s_subscriptionId,
+                 requestConfirmations: requestConfirmations,
+                callbackGasLimit: callbackGasLimit,
+                numWords: numWords,
+                extraArgs: VRFV2PlusClient._argsToBytes(
+                    // Set nativePayment to true to pay for VRF requests with Sepolia ETH instead of LINK
+                    VRFV2PlusClient.ExtraArgsV1({nativePayment: false})
+                )
+            })
+        );
+
+                // uint256 requestId = s_vrfCoordinator.requestRandomWords(
+    } 

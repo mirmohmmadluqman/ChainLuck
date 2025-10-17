@@ -1,0 +1,1 @@
+function gemini { python -m google.generativeai.cli @args }

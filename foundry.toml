@@ -1,0 +1,38 @@
+# [profile.default]
+# src = "src"
+# out = "out"
+# libs = ["lib"]
+
+# remappings = [
+#     # "@chainlink-brownie-contracts/=lib/chainlink-brownie-contracts/contracts/",
+#     # "@forge-std/=lib/forge-std/src/"
+#     # '@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts/'
+# ]
+
+
+[profile.default]
+    src = "src"
+    out = "out"
+    libs = ["lib"]
+    remappings = ['@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts/', '@solmate=lib/solmate/src/']
+
+
+[etherscan]
+    mainnet = { key = "${ETHERSCAN_API_KEY}" }
+    sepolia = {key = "${ETHERSCAN_API_KEY}"}
+
+
+[rpc_endpoints]
+    sepolia = "${SEPOLIA_RPC_URL}"
+
+
+[lint]
+
+    # # ... rest of lint config ...
+    # exclude_lints = ["mixed-case-variable"]
+
+    # ... rest of lint config ...
+    exclude_lints = ["unused-import"]
+    # exclude_lints = ["unused-variable"]          # Find how to allow unsed variables !!!
+
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config
